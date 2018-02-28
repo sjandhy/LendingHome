@@ -1,5 +1,5 @@
 # LendingHome
-Take-Home Assessment 
+### Take-Home Assessment 
 
 This repository is built to display/share my work on the take-home assessment for Lending Home.
 
