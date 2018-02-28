@@ -5,7 +5,7 @@ This repository is built to display/share my work on the take-home assessment fo
 
 ### Questions 1-2 are answered in the "SQL Questions" folder
 
-### Question 3 : To build a tool to browse Borrower/seller/Address history is located in "Flask Tool" folder
+### Question 3 : To build a tool to browse Borrower/Seller/Address history is located in "Flask Tool" folder
 
 #### To run the tool please follow the steps below:
 
