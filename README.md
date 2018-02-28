@@ -31,4 +31,7 @@ This repository is built to display/share my work on the take-home assessment fo
 
 
 ### Question 4: Automation starting with FTP file transfer to Table population on redshift in folder "FTP Upload"
-(Once the data is in the table, the tool is built in such a way thatit can access it)
+(Once the data is in the table, the tool is built in such a way that it can access it)
+Run the following:
+
+python Upload.py
