@@ -1,2 +1,0 @@
-# LendingHome
-Take-Home Assessment 
