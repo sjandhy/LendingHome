@@ -14,9 +14,9 @@ def querySHOW(num_return,sell_name,add_name):
 	#print num_return
 	cols = ['id','property_address','buyer','seller','transaction_date','property_id','property_type','transaction_amount','loan_amount','lender','sqft','year_built']
 	DATABASE = "mydb"
-	USER = "sjandhy"
-	PASSWORD = "Jandhyala4"
-	HOST = "sjandhy.ctfge7lkct5r.us-west-1.redshift.amazonaws.com"
+	USER = ""
+	PASSWORD = ""
+	HOST = ""
 	PORT = "5439"
 	SCHEMA = "public"      #default is "public" 
 
@@ -258,41 +258,4 @@ def querySHOW(num_return,sell_name,add_name):
 			return err_message
 	
 	
-	"""
-	query = "select * from LH where buyer like :val; "
-	query1 = "select count(*) from (select distinct(buyer) from LH where (buyer like :vall) group by buyer); "
-	rcheck1 = s.execute(query1,{'vall': buy_like})
-	r_result = rcheck1.fetchall()
-	r_results = r_result[0][0]
-	if r_results == 0:
-		str_result = 'No Such Borrower on records'
-		exp = 10
-		return (str_result)
-	elif r_results == 1:
-		rr = s.execute(query,{'val': buy_like})
-		all_results =  rr.fetchall()
-		exp = 11
-		x = pd.DataFrame(all_results,columns= cols,index=None)
-		return x
-	else:
-		str_result = 'There are multiple such buyers. Please be specific'
-		exp = 12
-		return (str_result)
-	"""
 	s.close()
-'''
-#def pretty(all_results):
-    for row in all_results :
-        print "row start >>>>>>>>>>>>>>>>>>>>"
-        for r in row :
-            print " ----" , r
-        print "row end >>>>>>>>>>>>>>>>>>>>>>"
-
-
-#pretty(all_results)
-
-
-########## close session in the end ###############
-	s.close()
-	'''
-#querySHOW('FEDERAL NATIONAL TRUST 2004-W6')
