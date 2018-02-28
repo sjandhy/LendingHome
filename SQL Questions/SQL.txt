@@ -1,0 +1,45 @@
+Data: Uploaded the csvs to S3 bucket
+
+https://console.aws.amazon.com/s3/buckets/lhtakehome/?region=us-west-1&tab=overview
+
+
+Question 1: Table to store data
+
+To create a database on redshift, I integrated SQLWorkbench with my Redshift cluster and created the table as follows:
+
+create table LH(
+id integer not null,
+property_address varchar(100),
+buyer varchar(50),
+seller varchar(50),
+transaction_date timestamp,
+property_id integer not null,
+property_type varchar(4),
+transaction_amount integer,
+loan_amount integer,
+lender varchar(50),
+sqft integer not null,
+year_built integer not null,
+primary key(id));
+
+
+
+Question 2: Count of fix-and-flip loans by lender by year
+This is a simple query to find lenders against property that was part of the buy-sell transaction within 365 days:
+This query joins LH(main table) with LH on the condition that lender,property,sqft, year etcare all the same
+while the transaction date differs. And grouping this by the lender and year to project the count of such trandactions.
+
+
+
+select a.lender, extract(year from a.transaction_date)as year, count(*) from LH a
+join LH b
+on a.property_id = b.property_id and a.property_type = b.property_type and
+a.id != b.id and a.transaction_date != b.transaction_date and a.lender = b.lender
+where a.transaction_date is not null and
+b.transaction_date is not null and
+a.sqft = b.sqft and a.year_built = b.year_built and 
+(a.transaction_date - b.transaction_date) > 0 and 
+(a.transaction_date - b.transaction_date) <=365 and
+(a.loan_amount != 0 or b.loan_amount !=0)
+group by a.lender, extract(year from a.transaction_date)
+order by a.lender desc, extract(year from a.transaction_date);
